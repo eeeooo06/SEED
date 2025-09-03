@@ -1,0 +1,48 @@
+﻿  Audio.cpp
+  Console.cpp
+  Constants.cpp
+  Dashboard.cpp
+  Entity.cpp
+C:\Users\seong\OneDrive\바탕 화면\Client\GameClient\GameClient\Game.h(1,1): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+  (compiling source file 'Entity.cpp')
+  
+C:\Users\seong\OneDrive\바탕 화면\Client\GameClient\GameClient\Entity.cpp(337,48): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
+C:\Users\seong\OneDrive\바탕 화면\Client\GameClient\GameClient\Entity.cpp(337,25): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
+C:\Users\seong\OneDrive\바탕 화면\Client\GameClient\GameClient\Entity.cpp(338,49): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
+C:\Users\seong\OneDrive\바탕 화면\Client\GameClient\GameClient\Entity.cpp(338,22): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
+C:\Users\seong\OneDrive\바탕 화면\Client\GameClient\GameClient\Entity.cpp(442,53): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Game.cpp
+C:\Users\seong\OneDrive\바탕 화면\Client\GameClient\GameClient\Game.h(1,1): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+  (compiling source file 'Game.cpp')
+  
+  Graphics.cpp
+  Image.cpp
+  Input.cpp
+C:\Users\seong\OneDrive\바탕 화면\Client\GameClient\GameClient\Input.cpp(1,1): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+C:\Users\seong\OneDrive\바탕 화면\Client\GameClient\GameClient\Input.cpp(124,15): warning C4244: 'argument': conversion from 'WPARAM' to '_Elem', possible loss of data
+C:\Users\seong\OneDrive\바탕 화면\Client\GameClient\GameClient\Input.cpp(124,15): warning C4244:         with
+C:\Users\seong\OneDrive\바탕 화면\Client\GameClient\GameClient\Input.cpp(124,15): warning C4244:         [
+C:\Users\seong\OneDrive\바탕 화면\Client\GameClient\GameClient\Input.cpp(124,15): warning C4244:             _Elem=char
+C:\Users\seong\OneDrive\바탕 화면\Client\GameClient\GameClient\Input.cpp(124,15): warning C4244:         ]
+C:\Users\seong\OneDrive\바탕 화면\Client\GameClient\GameClient\Input.cpp(125,14): warning C4244: '=': conversion from 'WPARAM' to 'char', possible loss of data
+  InputDialog.cpp
+  Main.cpp
+C:\Users\seong\OneDrive\바탕 화면\Client\GameClient\GameClient\Game.h(1,1): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+  (compiling source file 'Main.cpp')
+  
+C:\Users\seong\OneDrive\바탕 화면\Client\GameClient\GameClient\Main.cpp(59,19): warning C4244: 'return': conversion from 'WPARAM' to 'int', possible loss of data
+  Including RPG.h from: C:\Users\seong\OneDrive\바탕 화면\Client\GameClient\GameClient\RPG.h
+  MessageDialog.cpp
+  RPG.cpp
+C:\Users\seong\OneDrive\바탕 화면\Client\GameClient\GameClient\Game.h(1,1): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+  (compiling source file 'RPG.cpp')
+  
+  Including RPG.h from: C:\Users\seong\OneDrive\바탕 화면\Client\GameClient\GameClient\RPG.h
+  Scene.cpp
+C:\Users\seong\OneDrive\바탕 화면\Client\GameClient\GameClient\Game.h(1,1): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+  (compiling source file 'Scene.cpp')
+  
+  TextDX.cpp
+  TextureManager.cpp
+  Generating Code...
+  GameClient.vcxproj -> C:\Users\seong\OneDrive\바탕 화면\Client\GameClient\x64\Debug\GameClient.exe
