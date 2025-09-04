@@ -1,32 +1,32 @@
-# Prerequisites
-*.d
+# Visual Studio 관련
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# 빌드 산출물
+bin/
+obj/
+Debug/
+Release/
+x64/
+x86/
+[Bb]uild/
 
-# Precompiled Headers
-*.gch
+# 임시/캐시 파일
+*.ipch
 *.pch
+*.pdb
+*.obj
+*.idb
+*.class
+*.cache
+*.log
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
+# 기타
 *.exe
-*.out
-*.app
+*.dll
+*.lib
+*.mp4
+*.zip
