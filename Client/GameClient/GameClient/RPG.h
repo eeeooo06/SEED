@@ -38,25 +38,8 @@ private:
 
     std::string loggedInId;
 
-    void changeScene(SceneList k)
-    {
-        current = k;
 
-        // ★ 포인터를 '이름을 지정해서' 안전하게 채우자
-        SceneDeps deps{};
-        deps.g = graphics;
-        deps.i = input;
-        deps.atlas = &gameTextures;
-        deps.login = &login;
-        deps.client = &client;          // ← 핵심!
 
-        switch (k) {
-        case SceneList::Lobby:   scene = std::make_unique<LobbyScene>(deps);   break;
-        case SceneList::Loading: scene = std::make_unique<LoadingScene>(deps); break;
-        case SceneList::Main:    scene = std::make_unique<MainMapScene>(deps); break;
-        }
-        scene->enter();
-    }
 
 public:
     // constructor
@@ -72,6 +55,8 @@ public:
     void releaseAll();
     void resetAll();
     void run(HWND);
+
+    void changeScene(SceneList k);
 };
 #pragma message("Including RPG.h from: " __FILE__)
 #endif

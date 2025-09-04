@@ -113,42 +113,25 @@ void RPG::run(HWND hwnd)
 //=============================================================================
 void RPG::update()
 {
-    //if (getPaused()) // 메뉴 상태일 때
-    //{
-    //    if (input->anyKeyPressed())
-    //    {
-    //        setPaused(false);
-    //        input->clearAll();
-    //    }
-    //}
-    //else // 인게임 상태일 때
-    //{
-    //    //player.update(frameTime);
-    //    dashboard.update(player.getHealth());
+    if (scene) scene->update(frameTime);
 
-    //    if (input->isKeyDown(ESC_KEY))
-    //        setPaused(true);
-    //}
-    // 씬 업데이트
-    scene->update(frameTime);
-
-    // 씬 전환 조건 (상태를 RPG가 감시)
     if (current == SceneList::Lobby) {
-        auto* s = dynamic_cast<LobbyScene*>(scene.get());
-        if (s && s->hasPending()) changeScene(SceneList::Loading);
-    }
-    else if (current == SceneList::Loading) {
-        auto* s = dynamic_cast<LoadingScene*>(scene.get());
-        if (s) {
-            if (s->isDoneSuccess()) changeScene(SceneList::Main);
-            else if (s->isFailed() || input->isKeyDown(ESC_KEY)) {
-                login.reset(); changeScene(SceneList::Lobby);
-            }
+        if (auto* s = dynamic_cast<LobbyScene*>(scene.get())) {
+            if (s->hasPending()) changeScene(SceneList::Loading);
         }
     }
-    else if (current == SceneList::Main) {
-        if (input->isKeyDown(ESC_KEY)) {      // 로그아웃
-            login.reset(); changeScene(SceneList::Lobby);
+    else if (current == SceneList::Loading) {
+        if (auto* s = dynamic_cast<LoadingScene*>(scene.get())) {
+            if (s->isDoneSuccess()) changeScene(SceneList::ServerList);   // ★ 반드시 ServerList
+            else if (s->isFailed()) changeScene(SceneList::Lobby);
+        }
+    }
+    else if (current == SceneList::ServerList) {
+        auto* s = static_cast<ServerListScene*>(scene.get());
+        if (s->consumeConfirmed()) {
+            // 필요하다면 s->selectedServerId() / selectedIndex() 활용
+            // TODO: 캐릭터 리스트 요청 or 월드 접속 시도
+            changeScene(SceneList::Main);
         }
     }
 }
@@ -158,28 +141,30 @@ void RPG::update()
 //=============================================================================
 void RPG::render()
 {
-    if (!graphics) return;
-    
-    graphics->beginScene();
 
+    if (!graphics) return;
+
+    graphics->beginScene();
     graphics->spriteBegin();                // 스프라이트 그리기 시작
-    
-    //if (getPaused()) // 메뉴 상태일 때
-    //{
-    //    menu.draw();
-    //}
-    //else // 인게임 상태일 때
-    //{
-    //    dashboard.draw();
-    //    //player.draw();
-    //}
-    if (current == SceneList::Lobby || current == SceneList::Loading) {
+
+    // 1) 씬별 배경
+    switch (current) {
+    case SceneList::Lobby:
+    case SceneList::Loading:
+    case SceneList::ServerList:
+        // 로비/로딩/서버리스트는 메뉴 배경 사용
         menu.draw();
+        break;
+
+    case SceneList::Main:
+        // 메인 맵은 MainMapScene이 직접 맵 이미지를 그림
+        break;
     }
-    scene->render();
+
+    // 2) 현재 씬의 UI/텍스트 등
+    if (scene) scene->render();
 
     graphics->spriteEnd();                  // 스프라이트 그리기 종료
-
     graphics->endScene();
     graphics->showBackbuffer();
 }
@@ -204,4 +189,24 @@ void RPG::resetAll()
     menuTexture.onResetDevice();
     Game::resetAll();
     return;
+}
+
+void RPG::changeScene(SceneList k)
+{
+    current = k;
+
+    SceneDeps deps{};
+    deps.g = graphics;
+    deps.i = input;
+    deps.atlas = &gameTextures;
+    deps.login = &login;
+    deps.client = &client;
+
+    switch (k) {
+    case SceneList::Lobby:      scene = std::make_unique<LobbyScene>(deps);      break;
+    case SceneList::Loading:    scene = std::make_unique<LoadingScene>(deps);    break;
+    case SceneList::ServerList: scene = std::make_unique<ServerListScene>(deps); break;
+    case SceneList::Main:       scene = std::make_unique<MainMapScene>(deps);    break;
+    }
+    scene->enter();
 }

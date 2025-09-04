@@ -1,109 +1,113 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\",
+  "WorkspaceRootPath": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Constants.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\Constants.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Console.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\Console.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Constants.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\Constants.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Input.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\Input.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Input.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\Input.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\InputDialog.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\InputDialog.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Image.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\Image.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\Scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\RPG.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\RPG.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\RPG.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\RPG.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\RPG.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\LoginClient.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\LoginClient.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\LoginClient.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\LoginClient.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\LoginClient.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\LoginClient.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\RPG.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\RPG.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\TextDX.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Constants.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\Constants.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Scene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\Scene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Console.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\Console.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Constants.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\Constants.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Input.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\Input.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Input.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\Input.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\InputDialog.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\InputDialog.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Image.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\Image.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\TextDX.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\TextDX.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Graphics.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Graphics.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\Graphics.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Graphics.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Graphics.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\Graphics.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Entity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Entity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\Entity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\TextureManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\TextureManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\TextureManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\TextureManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\TextureManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\TextureManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\TextDX.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\TextDX.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\TextDX.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\MessageDialog.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\MessageDialog.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\MessageDialog.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\GameError.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\GameError.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\GameError.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Dashboard.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Dashboard.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\Dashboard.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Audio.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Audio.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D61E53A6-5419-4E23-84DB-6737E90CD7BD}|GameClient\\GameClient.vcxproj|solutionrelative:GameClient\\Audio.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -114,7 +118,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -122,37 +126,180 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Scene.cpp",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Scene.cpp",
+              "RelativeDocumentMoniker": "GameClient\\Scene.cpp",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Scene.cpp",
+              "RelativeToolTip": "GameClient\\Scene.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-04T06:15:52.626Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "Input.h",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Input.h",
-              "RelativeDocumentMoniker": "GameClient\\Input.h",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Input.h",
-              "RelativeToolTip": "GameClient\\Input.h",
-              "ViewState": "AgIAADcBAAAAAAAAAADwv3YBAAAFAAAAAAAAAA==",
+              "Title": "Constants.h",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Constants.h",
+              "RelativeDocumentMoniker": "GameClient\\Constants.h",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Constants.h",
+              "RelativeToolTip": "GameClient\\Constants.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-09-03T08:16:49.181Z",
+              "WhenOpened": "2025-09-03T02:42:38.598Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LoginClient.h",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\LoginClient.h",
+              "RelativeDocumentMoniker": "GameClient\\LoginClient.h",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\LoginClient.h",
+              "RelativeToolTip": "GameClient\\LoginClient.h",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAAFkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-09-03T07:14:57.166Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Console.cpp",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Console.cpp",
+              "RelativeDocumentMoniker": "GameClient\\Console.cpp",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Console.cpp",
+              "RelativeToolTip": "GameClient\\Console.cpp",
+              "ViewState": "AgIAALoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-02T17:52:13.281Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LoginClient.cpp",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\LoginClient.cpp",
+              "RelativeDocumentMoniker": "GameClient\\LoginClient.cpp",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\LoginClient.cpp",
+              "RelativeToolTip": "GameClient\\LoginClient.cpp",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAAAKwAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-03T07:15:14.315Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Scene.h",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Scene.h",
+              "RelativeDocumentMoniker": "GameClient\\Scene.h",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Scene.h",
+              "RelativeToolTip": "GameClient\\Scene.h",
+              "ViewState": "AgIAAG4BAAAAAAAAAAAAAHoBAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-09-03T06:35:06.73Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RPG.h",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\RPG.h",
+              "RelativeDocumentMoniker": "GameClient\\RPG.h",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\RPG.h",
+              "RelativeToolTip": "GameClient\\RPG.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-09-02T17:53:42.431Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Constants.h",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Constants.h",
-              "RelativeDocumentMoniker": "GameClient\\Constants.h",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Constants.h",
-              "RelativeToolTip": "GameClient\\Constants.h",
-              "ViewState": "AgIAADQAAAAAAAAAAAAwwEIAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-09-03T02:42:38.598Z",
-              "EditorCaption": ""
+              "Title": "RPG.cpp",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\RPG.cpp",
+              "RelativeDocumentMoniker": "GameClient\\RPG.cpp",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\RPG.cpp",
+              "RelativeToolTip": "GameClient\\RPG.cpp",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAAAIIAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-02T17:52:22.393Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
+              "Title": "Game.h",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Game.h",
+              "RelativeDocumentMoniker": "GameClient\\Game.h",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Game.h",
+              "RelativeToolTip": "GameClient\\Game.h",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAABoAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-09-03T04:02:25.996Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Constants.cpp",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Constants.cpp",
+              "RelativeDocumentMoniker": "GameClient\\Constants.cpp",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Constants.cpp",
+              "RelativeToolTip": "GameClient\\Constants.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-02T17:52:14.263Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Game.cpp",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Game.cpp",
+              "RelativeDocumentMoniker": "GameClient\\Game.cpp",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Game.cpp",
+              "RelativeToolTip": "GameClient\\Game.cpp",
+              "ViewState": "AgIAAA4BAAAAAAAAAAAAACIBAABgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-02T17:52:16.675Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Main.cpp",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Main.cpp",
+              "RelativeDocumentMoniker": "GameClient\\Main.cpp",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Main.cpp",
+              "RelativeToolTip": "GameClient\\Main.cpp",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAADAAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-02T17:52:20.969Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Input.cpp",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Input.cpp",
+              "RelativeDocumentMoniker": "GameClient\\Input.cpp",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Input.cpp",
+              "RelativeToolTip": "GameClient\\Input.cpp",
+              "ViewState": "AgIAAAgBAAAAAAAAAADwvxkBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-02T17:52:19.63Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Input.h",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Input.h",
+              "RelativeDocumentMoniker": "GameClient\\Input.h",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Input.h",
+              "RelativeToolTip": "GameClient\\Input.h",
+              "ViewState": "AgIAADcBAAAAAAAAAADwv3YBAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-09-03T08:16:49.181Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "InputDialog.cpp",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\InputDialog.cpp",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\InputDialog.cpp",
               "RelativeDocumentMoniker": "GameClient\\InputDialog.cpp",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\InputDialog.cpp",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\InputDialog.cpp",
               "RelativeToolTip": "GameClient\\InputDialog.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -160,88 +307,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Input.cpp",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Input.cpp",
-              "RelativeDocumentMoniker": "GameClient\\Input.cpp",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Input.cpp",
-              "RelativeToolTip": "GameClient\\Input.cpp",
-              "ViewState": "AgIAAAgBAAAAAAAAAADwvxkBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-02T17:52:19.63Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "LoginClient.h",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\LoginClient.h",
-              "RelativeDocumentMoniker": "GameClient\\LoginClient.h",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\LoginClient.h",
-              "RelativeToolTip": "GameClient\\LoginClient.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-09-03T07:14:57.166Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Main.cpp",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Main.cpp",
-              "RelativeDocumentMoniker": "GameClient\\Main.cpp",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Main.cpp",
-              "RelativeToolTip": "GameClient\\Main.cpp",
-              "ViewState": "AgIAABMAAAAAAAAAAAAAADAAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-02T17:52:20.969Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Game.cpp",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Game.cpp",
-              "RelativeDocumentMoniker": "GameClient\\Game.cpp",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Game.cpp",
-              "RelativeToolTip": "GameClient\\Game.cpp",
-              "ViewState": "AgIAAA4BAAAAAAAAAAAAACgBAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-02T17:52:16.675Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Constants.cpp",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Constants.cpp",
-              "RelativeDocumentMoniker": "GameClient\\Constants.cpp",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Constants.cpp",
-              "RelativeToolTip": "GameClient\\Constants.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-02T17:52:14.263Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Console.cpp",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Console.cpp",
-              "RelativeDocumentMoniker": "GameClient\\Console.cpp",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Console.cpp",
-              "RelativeToolTip": "GameClient\\Console.cpp",
-              "ViewState": "AgIAALoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-02T17:52:13.281Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 15,
               "Title": "Image.cpp",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Image.cpp",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Image.cpp",
               "RelativeDocumentMoniker": "GameClient\\Image.cpp",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Image.cpp",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Image.cpp",
               "RelativeToolTip": "GameClient\\Image.cpp",
               "ViewState": "AgIAAJ0AAAAAAAAAAAAhwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -249,71 +319,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "LoginClient.cpp",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\LoginClient.cpp",
-              "RelativeDocumentMoniker": "GameClient\\LoginClient.cpp",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\LoginClient.cpp",
-              "RelativeToolTip": "GameClient\\LoginClient.cpp",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-03T07:15:14.315Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "RPG.cpp",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\RPG.cpp",
-              "RelativeDocumentMoniker": "GameClient\\RPG.cpp",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\RPG.cpp",
-              "RelativeToolTip": "GameClient\\RPG.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-02T17:52:22.393Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "RPG.h",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\RPG.h",
-              "RelativeDocumentMoniker": "GameClient\\RPG.h",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\RPG.h",
-              "RelativeToolTip": "GameClient\\RPG.h",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAC4AAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-09-02T17:53:42.431Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Scene.h",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Scene.h",
-              "RelativeDocumentMoniker": "GameClient\\Scene.h",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Scene.h",
-              "RelativeToolTip": "GameClient\\Scene.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKQAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-09-03T06:35:06.73Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Game.h",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Game.h",
-              "RelativeDocumentMoniker": "GameClient\\Game.h",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Game.h",
-              "RelativeToolTip": "GameClient\\Game.h",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAABoAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-09-03T04:02:25.996Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "TextDX.cpp",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\TextDX.cpp",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\TextDX.cpp",
               "RelativeDocumentMoniker": "GameClient\\TextDX.cpp",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\TextDX.cpp",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\TextDX.cpp",
               "RelativeToolTip": "GameClient\\TextDX.cpp",
               "ViewState": "AgIAAFoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -321,11 +331,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "TextureManager.cpp",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\TextureManager.cpp",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\TextureManager.cpp",
               "RelativeDocumentMoniker": "GameClient\\TextureManager.cpp",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\TextureManager.cpp",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\TextureManager.cpp",
               "RelativeToolTip": "GameClient\\TextureManager.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -333,11 +343,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "Graphics.h",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Graphics.h",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Graphics.h",
               "RelativeDocumentMoniker": "GameClient\\Graphics.h",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Graphics.h",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Graphics.h",
               "RelativeToolTip": "GameClient\\Graphics.h",
               "ViewState": "AgIAAGoAAAAAAAAAAAAswHYAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -345,11 +355,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "TextDX.h",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\TextDX.h",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\TextDX.h",
               "RelativeDocumentMoniker": "GameClient\\TextDX.h",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\TextDX.h",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\TextDX.h",
               "RelativeToolTip": "GameClient\\TextDX.h",
               "ViewState": "AgIAAC0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -357,11 +367,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "TextureManager.h",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\TextureManager.h",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\TextureManager.h",
               "RelativeDocumentMoniker": "GameClient\\TextureManager.h",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\TextureManager.h",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\TextureManager.h",
               "RelativeToolTip": "GameClient\\TextureManager.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -369,11 +379,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "MessageDialog.cpp",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\MessageDialog.cpp",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\MessageDialog.cpp",
               "RelativeDocumentMoniker": "GameClient\\MessageDialog.cpp",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\MessageDialog.cpp",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\MessageDialog.cpp",
               "RelativeToolTip": "GameClient\\MessageDialog.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -381,11 +391,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "Graphics.cpp",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Graphics.cpp",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Graphics.cpp",
               "RelativeDocumentMoniker": "GameClient\\Graphics.cpp",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Graphics.cpp",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Graphics.cpp",
               "RelativeToolTip": "GameClient\\Graphics.cpp",
               "ViewState": "AgIAANwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -393,11 +403,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "GameError.cpp",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\GameError.cpp",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\GameError.cpp",
               "RelativeDocumentMoniker": "GameClient\\GameError.cpp",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\GameError.cpp",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\GameError.cpp",
               "RelativeToolTip": "GameClient\\GameError.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -405,11 +415,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "Entity.cpp",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Entity.cpp",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Entity.cpp",
               "RelativeDocumentMoniker": "GameClient\\Entity.cpp",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Entity.cpp",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Entity.cpp",
               "RelativeToolTip": "GameClient\\Entity.cpp",
               "ViewState": "AgIAADYBAAAAAAAAAAAtwFwBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -417,11 +427,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "Dashboard.cpp",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Dashboard.cpp",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Dashboard.cpp",
               "RelativeDocumentMoniker": "GameClient\\Dashboard.cpp",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Dashboard.cpp",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Dashboard.cpp",
               "RelativeToolTip": "GameClient\\Dashboard.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -429,11 +439,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "Audio.cpp",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Audio.cpp",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Audio.cpp",
               "RelativeDocumentMoniker": "GameClient\\Audio.cpp",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Client\\GameClient\\GameClient\\Audio.cpp",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Client\\GameClient\\GameClient\\Audio.cpp",
               "RelativeToolTip": "GameClient\\Audio.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
