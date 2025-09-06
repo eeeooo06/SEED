@@ -1,403 +1,399 @@
-﻿#define TESTWORLD { "TestWorld", "Test",      "222.232.36.150", 32000, 12, true }
-
+﻿#define _CRT_SECURE_NO_WARNINGS
 #include "Net_S.h"
-#include <sstream>
-#include <iomanip>
 
-// ------------ 유틸: 앞/뒤 공백 및 개행 제거 ------------
+#include <algorithm>
+#include <chrono>
+#include <ctime>
+#include <iomanip>
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <vector>
+
+#include "SqlUtil.h"
+
+// MySQL Connector/C++ 8.x
+#include <mysql/jdbc.h>
+#include <cppconn/exception.h>
+
+// 링킹
+#pragma comment(lib, "Ws2_32.lib")
+
+// -------------------------------------------------------------
+// 환경
+// -------------------------------------------------------------
+static constexpr int   SERVER_PORT = 32000;
+static constexpr int   BUFFER_SIZE = 4096;
+static const    char* SESSION_SECRET = "dev-only-secret";
+static const    char* DEFAULT_WORLD_CODE = "TEST";
+
+// -------------------------------------------------------------
+// 간단 유틸
+// -------------------------------------------------------------
 static inline void TrimInPlace(std::string& s) {
     size_t b = 0, e = s.size();
     auto isws = [](char c) { return c == ' ' || c == '\t' || c == '\r' || c == '\n'; };
     while (b < e && isws(s[b])) ++b;
     while (e > b && isws(s[e - 1])) --e;
-    if (b == 0 && e == s.size()) return;
-    s = s.substr(b, e - b);
+    if (b != 0 || e != s.size()) s = s.substr(b, e - b);
 }
-// -------------------------------------------------------
-
-Net_S::Net_S()
-    : wsaData{}
-    , ServerSocket(INVALID_SOCKET)
-    , serverAddr{}
-{
-    InitializeDatabase();
+static std::vector<std::string> Split(const std::string& s, char delimiter) {
+    std::vector<std::string> tokens; std::string tok; std::istringstream is(s);
+    while (std::getline(is, tok, delimiter)) tokens.push_back(tok);
+    return tokens;
 }
 
-Net_S::~Net_S()
-{
-    Cleanup();
-}
+// -------------------------------------------------------------
+// Net_S
+// -------------------------------------------------------------
+Net_S::Net_S() {}
+Net_S::~Net_S() { Cleanup(); }
 
-// 요기 만들어놓은 임시 데이터 베이스
-void Net_S::InitializeDatabase()
-{
-    userDatabase["Admin"] = "123123";
-    userDatabase["Danjee"] = "seongung7431";
+// DB 연결
+bool Net_S::InitializeDatabase() {
+    CommonDB::DbConfig cfg;
+    cfg.host = "tcp://222.232.36.150:3306";
+    cfg.user = "GM_Admin";
+    cfg.pass = "GameMaster!@Admin";
 
-    // 데모용 서버 리스트
-    servers.push_back(TESTWORLD);
-    //servers.push_back({ "world-2", "서리 협곡", "222.232.36.150", 32000, 67, true });
-    //servers.push_back({ "world-3", "용암 심연", "127.0.0.1",      32000,  0, false }); // 점검중
-
-    // 데모용 캐릭터 DB
-    userCharacters["Admin"] = {
-        {1001, "Akane", 12, "Warrior"},
-        {1002, "Lize",   7, "Mage"}
-    };
-    userCharacters["Danjee"] = {
-        {1003, "Seong", 20, "Rogue"}
-    };
-    nextCharId = 1004;
-}
-
-bool Net_S::Initialize()
-{
-    int result = WSAStartup(MAKEWORD(2, 2), &wsaData);
-    if (result != 0)
-    {
-        std::cout << "WSAStartup failed: " << result << std::endl;
+    try {
+        db_ = std::make_unique<CommonDB::Db>(cfg);
+        auth_ = std::make_unique<CommonDB::Auth>(*db_);
+        dir_ = std::make_unique<CommonDB::Directory>(*db_);
+        game_ = std::make_unique<CommonDB::Game>(*db_);
+        std::cout << "[DB] connected.\n";
+        return true;
+    }
+    catch (const sql::SQLException& e) {
+        const char* state = e.getSQLStateCStr();
+        std::cerr << "[DB] connect error: " << e.what()
+            << " (sqlstate=" << (state ? state : "NULL")
+            << ", code=" << e.getErrorCode() << ")\n";
+        return false; // ❗ 예외 다시 던지지 말고 false
+    }
+    catch (const std::exception& e) {
+        std::cerr << "[DB] std::exception: " << e.what() << "\n";
         return false;
     }
+}
 
+// 네트워킹
+bool Net_S::Initialize() {
+    int result = WSAStartup(MAKEWORD(2, 2), &wsaData);
+    if (result != 0) { std::cout << "WSAStartup failed: " << result << std::endl; return false; }
     ServerSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-    if (ServerSocket == INVALID_SOCKET)
-    {
-        std::cout << "Socket creation failed: " << WSAGetLastError() << std::endl;
-        WSACleanup();
-        return false;
+    if (ServerSocket == INVALID_SOCKET) {
+        std::cout << "Socket creation failed: " << WSAGetLastError() << std::endl; WSACleanup(); return false;
     }
     return true;
 }
-
-bool Net_S::BindAndListen()
-{
+bool Net_S::BindAndListen() {
     memset(&serverAddr, 0, sizeof(serverAddr));
     serverAddr.sin_family = AF_INET;
     serverAddr.sin_addr.s_addr = INADDR_ANY;
     serverAddr.sin_port = htons(SERVER_PORT);
 
     int result = bind(ServerSocket, (struct sockaddr*)&serverAddr, sizeof(serverAddr));
-    if (result == SOCKET_ERROR)
-    {
-        std::cout << "Bind failed: " << WSAGetLastError() << std::endl;
-        closesocket(ServerSocket);
-        WSACleanup();
-        return false;
+    if (result == SOCKET_ERROR) {
+        std::cout << "Bind failed: " << WSAGetLastError() << std::endl; closesocket(ServerSocket); WSACleanup(); return false;
     }
-
-    // 큐 넉넉히
     result = listen(ServerSocket, SOMAXCONN);
-    if (result == SOCKET_ERROR)
-    {
-        std::cout << "Listen failed: " << WSAGetLastError() << std::endl;
-        closesocket(ServerSocket);
-        WSACleanup();
-        return false;
+    if (result == SOCKET_ERROR) {
+        std::cout << "Listen failed: " << WSAGetLastError() << std::endl; closesocket(ServerSocket); WSACleanup(); return false;
     }
-    std::cout << "Server is listening on port " << SERVER_PORT << std::endl;
+    std::cout << "Server listening on " << SERVER_PORT << std::endl;
     return true;
 }
 
-void Net_S::Run()
-{
-    if (!Initialize() || !BindAndListen())
-    {
-        return;
-    }
+void Net_S::Run() {
+    if (!Initialize() || !BindAndListen()) return;
 
-    while (true)
-    {
-        sockaddr_in clientAddr;
-        int clientAddrSize = sizeof(clientAddr);
+    while (true) {
+        sockaddr_in clientAddr{}; int clientAddrSize = sizeof(clientAddr);
         SOCKET clientSocket = accept(ServerSocket, (struct sockaddr*)&clientAddr, &clientAddrSize);
-        if (clientSocket == INVALID_SOCKET)
-        {
-            std::cout << "Accept failed: " << WSAGetLastError() << std::endl;
-            continue;
-        }
+        if (clientSocket == INVALID_SOCKET) { std::cout << "Accept failed: " << WSAGetLastError() << std::endl; continue; }
         std::cout << "Client connected." << std::endl;
-
         HandleClient(clientSocket);
     }
 }
+void Net_S::Cleanup() {
+    if (ServerSocket != INVALID_SOCKET) closesocket(ServerSocket);
+    WSACleanup();
+}
 
-void Net_S::HandleClient(SOCKET clientSocket)
-{
-    char buffer[BUFFER_SIZE] = { 0 };
+// 세션/티켓
+std::string Net_S::CreateSession(uint64_t accountId) {
+    std::time_t now = std::time(nullptr);
+    std::string core = std::to_string((unsigned long long)accountId) + ":" + std::to_string((long long)now);
+    std::hash<std::string> h; std::string sig = std::to_string(h(core + ":" + SESSION_SECRET));
+    std::string token = core + ":" + sig;
+    sessionToAccount_[token] = accountId;
+    return token;
+}
+bool Net_S::CheckSession(const std::string& token, uint64_t& outAccountId) {
+    auto it = sessionToAccount_.find(token);
+    if (it == sessionToAccount_.end()) return false;
+    outAccountId = it->second; return true;
+}
+std::string Net_S::GenerateWorldTicket(uint64_t accountId, uint64_t playerId, const std::string& serverName) {
+    std::time_t now = std::time(nullptr);
+    std::string payload = std::to_string((unsigned long long)accountId) + "|" +
+        std::to_string((unsigned long long)playerId) + "|" +
+        serverName + "|" + std::to_string((long long)now);
+    std::hash<std::string> h; std::string sig = std::to_string(h(payload + ":" + SESSION_SECRET));
+    return payload + "|" + sig;
+}
+
+// 클라 처리 (DB 기반 명령)
+void Net_S::HandleClient(SOCKET clientSocket) {
+    char buffer[BUFFER_SIZE]{};
     int recvResult = 0;
 
-    while ((recvResult = recv(clientSocket, buffer, BUFFER_SIZE, 0)) > 0)
-    {
-        int safeLen = (recvResult < BUFFER_SIZE) ? recvResult : (BUFFER_SIZE - 1);
-        buffer[safeLen] = '\0';
-        std::cout << "Received from client: [" << buffer << "]" << std::endl;
+    while ((recvResult = recv(clientSocket, buffer, BUFFER_SIZE - 1, 0)) > 0) {
+        buffer[recvResult] = '\0';
+        std::string input = buffer;
+        std::cout << "Recv: " << input << std::endl;
 
-        std::vector<std::string> parts = Split(buffer, '#');
+        auto parts = Split(input, '#'); for (auto& p : parts) TrimInPlace(p);
+        std::string response;
 
-        // ---- 여기! 각 파트 트림 ----
-        for (auto& p : parts) TrimInPlace(p);
+        if (!parts.empty()) {
+            const std::string& command = parts[0];
 
-        std::string response = "";
+            // -------------------------------------------------
+            // REGISTER#username#password
+            // -------------------------------------------------
+            if (command == "REGISTER" && parts.size() == 3) {
+                const std::string& username = parts[1];
+                const std::string& password = parts[2];
 
-        if (!parts.empty())
-        {
-            std::string command = parts[0];
-
-            // --- LOGIN ---
-            if (command == "LOGIN" && parts.size() == 3)
-            {
-                std::string userId = parts[1];
-                std::string password = parts[2];
-
-                if (userDatabase.count(userId) && userDatabase[userId] == password)
-                {
-                    if (std::find(loggedInUsers.begin(), loggedInUsers.end(), userId) == loggedInUsers.end())
-                    {
-                        loggedInUsers.push_back(userId);
-
-                        // 세션 토큰 발급
-                        std::string token = CreateSession(userId);
+                auto validUser = [](const std::string& u) {
+                    if (u.size() < 3 || u.size() > 20) return false;
+                    for (char c : u) if (!((c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || c == '_')) return false;
+                    return true;
+                    };
+                if (!validUser(username)) {
+                    response = "REGISTER_FAIL#INVALID_USERNAME";
+                }
+                else if (password.size() < 8 || password.size() > 64) {
+                    response = "REGISTER_FAIL#INVALID_PASSWORD";
+                }
+                else {
+                    try {
+                        bool ok = auth_->CreateAccount(username, password);
+                        response = ok ? "REGISTER_OK" : "REGISTER_FAIL#USER_EXISTS";
+                    }
+                    catch (const sql::SQLException& e) {
+                        std::cerr << "[SQL] register: " << CommonDB::SqlUtil::Explain(e) << std::endl;
+                        response = "REGISTER_FAIL#SERVER_ERROR";
+                    }
+                }
+            }
+            // -------------------------------------------------
+            // LOGIN#username#password
+            // -------------------------------------------------
+            else if (command == "LOGIN" && parts.size() == 3) {
+                const std::string& username = parts[1];
+                const std::string& password = parts[2];
+                try {
+                    uint64_t accId = auth_->VerifyPasswordAndGetId(username, password);
+                    if (accId == 0) {
+                        response = "LOGIN_FAIL_INVALID_CREDENTIALS";
+                    }
+                    else {
+                        auto token = CreateSession(accId);
                         response = "LOGIN_SUCCESS#" + token;
-                        std::cout << "User '" << userId << "' logged in. token=" << token << std::endl;
-                    }
-                    else
-                    {
-                        response = "LOGIN_FAIL_ALREADY_LOGGED_IN";
+                        std::cout << "[login] " << username << " (id=" << accId << ")\n";
                     }
                 }
-                else
-                {
-                    response = "LOGIN_FAIL_INVALID_CREDENTIALS";
+                catch (const sql::SQLException& e) {
+                    std::cerr << "[SQL] login error: " << CommonDB::SqlUtil::Explain(e) << std::endl;
+                    response = "LOGIN_FAIL#SERVER_ERROR";
                 }
             }
-            // --- LOGOUT ---
-            else if (command == "LOGOUT" && parts.size() == 2)
-            {
+            // -------------------------------------------------
+            // LOGOUT#token
+            // -------------------------------------------------
+            else if (command == "LOGOUT" && parts.size() == 2) {
                 std::string token = parts[1];
-                std::string userId;
-                if (CheckSession(token, userId))
-                {
-                    // 세션 제거
-                    sessionToUser.erase(token);
-                    auto it = std::find(loggedInUsers.begin(), loggedInUsers.end(), userId);
-                    if (it != loggedInUsers.end()) loggedInUsers.erase(it);
-                    response = "LOGOUT_SUCCESS";
-                    std::cout << "User '" << userId << "' logged out." << std::endl;
-                }
-                else response = "LOGOUT_FAIL_NOT_LOGGED_IN";
+                if (sessionToAccount_.erase(token)) response = "LOGOUT_SUCCESS";
+                else                                 response = "LOGOUT_FAIL_NOT_LOGGED_IN";
             }
-            // --- GET_SERVERS ---
-            else if (command == "GET_SERVERS" && parts.size() == 2)
-            {
-                std::string token = parts[1];
-                std::string userId;
-                if (!CheckSession(token, userId))
-                {
+            // -------------------------------------------------
+            // GET_SERVERS#token
+            // -------------------------------------------------
+            else if (command == "GET_SERVERS" && parts.size() == 2) {
+                std::string token = parts[1]; uint64_t accountId = 0;
+                if (!CheckSession(token, accountId)) {
                     response = "SERVER_LIST_FAIL#INVALID_SESSION";
                 }
-                else
-                {
-                    std::ostringstream oss;
-                    oss << "SERVER_LIST#" << servers.size() << "#";
-                    for (size_t i = 0; i < servers.size(); ++i)
-                    {
-                        const auto& s = servers[i];
-                        oss << s.id << "|" << s.name << "|" << s.ip << "|" << s.port
-                            << "|" << s.load << "|" << (s.online ? 1 : 0);
-                        if (i + 1 < servers.size()) oss << ";";
+                else {
+                    try {
+                        auto list = dir_->FetchOnlineGameServers();
+                        std::ostringstream oss;
+                        oss << "SERVER_LIST#" << list.size() << "#";
+                        for (size_t i = 0; i < list.size(); ++i) {
+                            const auto& [world, name, host, port] = list[i];
+                            oss << name << "|" << world << "|" << host << "|" << port << "|0|1";
+                            if (i + 1 < list.size()) oss << ";";
+                        }
+                        response = oss.str();
                     }
-                    response = oss.str();
+                    catch (const sql::SQLException& e) {
+                        std::cerr << "[SQL] serverlist: " << CommonDB::SqlUtil::Explain(e) << std::endl;
+                        response = "SERVER_LIST_FAIL#SERVER_ERROR";
+                    }
                 }
             }
-            // --- GET_CHARACTERS ---
-            else if (command == "GET_CHARACTERS" && parts.size() == 2)
-            {
-                std::string token = parts[1];
-                std::string userId;
-                if (!CheckSession(token, userId))
-                {
+            // -------------------------------------------------
+            // GET_CHARACTERS#token
+            // -------------------------------------------------
+            else if (command == "GET_CHARACTERS" && parts.size() == 2) {
+                std::string token = parts[1]; uint64_t accountId = 0;
+                if (!CheckSession(token, accountId)) {
                     response = "CHAR_LIST_FAIL#INVALID_SESSION";
                 }
-                else
-                {
-                    auto& vec = userCharacters[userId]; // 없으면 생성
-                    std::ostringstream oss;
-                    oss << "CHAR_LIST#" << vec.size() << "#";
-                    for (size_t i = 0; i < vec.size(); ++i)
-                    {
-                        const auto& c = vec[i];
-                        oss << c.id << "|" << c.name << "|" << c.level << "|" << c.clazz;
-                        if (i + 1 < vec.size()) oss << ";";
+                else {
+                    try {
+                        auto rows = game_->ListPlayersByAccount(accountId);
+                        std::ostringstream oss;
+                        oss << "CHAR_LIST#" << rows.size() << "#";
+                        for (size_t i = 0; i < rows.size(); ++i) {
+                            const auto& r = rows[i];
+                            oss << r.player_id << "|" << r.name << "|" << r.level << "|Unknown";
+                            if (i + 1 < rows.size()) oss << ";";
+                        }
+                        response = oss.str();
                     }
-                    response = oss.str();
+                    catch (const sql::SQLException& e) {
+                        std::cerr << "[SQL] charlist: " << CommonDB::SqlUtil::Explain(e) << std::endl;
+                        response = "CHAR_LIST_FAIL#SERVER_ERROR";
+                    }
                 }
             }
-            // --- CREATE_CHARACTER ---
-            else if (command == "CREATE_CHARACTER" && parts.size() == 4)
-            {
+            // -------------------------------------------------
+            // CREATE_CHARACTER#token#name#class
+            // -------------------------------------------------
+            else if (command == "CREATE_CHARACTER" && parts.size() == 4) {
                 std::string token = parts[1];
                 std::string name = parts[2];
-                std::string clazz = parts[3];
-
-                std::string userId;
-                if (!CheckSession(token, userId))
-                {
+                std::string clazz = parts[3]; (void)clazz;
+                uint64_t accountId = 0;
+                if (!CheckSession(token, accountId)) {
                     response = "CREATE_FAIL#INVALID_SESSION";
                 }
-                else
-                {
-                    CharacterInfo c;
-                    c.id = nextCharId++;
-                    c.name = name;
-                    c.level = 1;
-                    c.clazz = clazz;
-                    userCharacters[userId].push_back(c);
-                    response = "CREATE_OK#" + std::to_string(c.id);
+                else {
+                    try {
+                        bool ok = game_->CreatePlayer(accountId, DEFAULT_WORLD_CODE, name);
+                        response = ok ? "CREATE_OK#0" : "CREATE_FAIL#DB_ERROR";
+                    }
+                    catch (const sql::SQLException& e) {
+                        std::cerr << "[SQL] create: " << CommonDB::SqlUtil::Explain(e) << std::endl;
+                        response = "CREATE_FAIL#SERVER_ERROR";
+                    }
                 }
             }
-            // --- DELETE_CHARACTER ---
-            else if (command == "DELETE_CHARACTER" && parts.size() == 3)
-            {
-                std::string token = parts[1];
-                int         charId = std::stoi(parts[2]);
-
-                std::string userId;
-                if (!CheckSession(token, userId))
-                {
+            // -------------------------------------------------
+            // DELETE_CHARACTER#token#playerId
+            // -------------------------------------------------
+            else if (command == "DELETE_CHARACTER" && parts.size() == 3) {
+                std::string token = parts[1]; uint64_t playerId = std::stoull(parts[2]);
+                uint64_t accountId = 0;
+                if (!CheckSession(token, accountId)) {
                     response = "DELETE_FAIL#INVALID_SESSION";
                 }
-                else
-                {
-                    auto& vec = userCharacters[userId];
-                    auto it = std::remove_if(vec.begin(), vec.end(),
-                        [&](const CharacterInfo& c) { return c.id == charId; });
-                    if (it != vec.end())
-                    {
-                        vec.erase(it, vec.end());
-                        response = "DELETE_OK";
+                else {
+                    try {
+                        db_->UseGame();
+                        std::unique_ptr<sql::PreparedStatement> ps(
+                            db_->conn()->prepareStatement(
+                                "DELETE FROM players WHERE player_id=? AND account_id=?"));
+                        ps->setUInt64(1, playerId);
+                        ps->setUInt64(2, accountId);
+                        int n = ps->executeUpdate();
+                        response = (n > 0) ? "DELETE_OK" : "DELETE_FAIL#NOT_FOUND";
                     }
-                    else response = "DELETE_FAIL#NOT_FOUND";
+                    catch (const sql::SQLException& e) {
+                        std::cerr << "[SQL] delete: " << CommonDB::SqlUtil::Explain(e) << std::endl;
+                        response = "DELETE_FAIL#SERVER_ERROR";
+                    }
                 }
             }
-            // --- SELECT_CHARACTER (월드 접속 티켓 발급) ---
-            else if (command == "SELECT_CHARACTER" && parts.size() == 4)
-            {
+            // -------------------------------------------------
+            // SELECT_CHARACTER#token#playerId#serverName
+            // -------------------------------------------------
+            else if (command == "SELECT_CHARACTER" && parts.size() == 4) {
                 std::string token = parts[1];
-                int         charId = std::stoi(parts[2]);
-                std::string serverId = parts[3];
-
-                std::string userId;
-                if (!CheckSession(token, userId))
-                {
+                uint64_t    playerId = std::stoull(parts[2]);
+                std::string serverName = parts[3];
+                uint64_t accountId = 0;
+                if (!CheckSession(token, accountId)) {
                     response = "SELECT_FAIL#INVALID_SESSION";
                 }
-                else
-                {
-                    // 캐릭터 존재 확인
-                    auto& vec = userCharacters[userId];
-                    auto itc = std::find_if(vec.begin(), vec.end(),
-                        [&](const CharacterInfo& c) { return c.id == charId; });
-                    if (itc == vec.end())
-                    {
-                        response = "SELECT_FAIL#CHAR_NOT_FOUND";
+                else {
+                    try {
+                        // 소유 확인
+                        db_->UseGame();
+                        std::unique_ptr<sql::PreparedStatement> ps(
+                            db_->conn()->prepareStatement(
+                                "SELECT 1 FROM players WHERE player_id=? AND account_id=?"));
+                        ps->setUInt64(1, playerId);
+                        ps->setUInt64(2, accountId);
+                        std::unique_ptr<sql::ResultSet> rs(ps->executeQuery());
+                        if (!rs->next()) {
+                            response = "SELECT_FAIL#CHAR_NOT_FOUND";
+                        }
+                        else {
+                            // 서버 host/port
+                            db_->UseDirectory();
+                            std::unique_ptr<sql::PreparedStatement> ps2(
+                                db_->conn()->prepareStatement(
+                                    "SELECT host, port FROM servers "
+                                    "WHERE name=? AND server_type='GAME' AND status='ONLINE' LIMIT 1"));
+                            ps2->setString(1, serverName);
+                            std::unique_ptr<sql::ResultSet> rs2(ps2->executeQuery());
+                            if (!rs2->next()) {
+                                response = "SELECT_FAIL#SERVER_UNAVAILABLE";
+                            }
+                            else {
+                                std::string host = rs2->getString(1);
+                                int         port = rs2->getInt(2);
+                                std::string ticket = GenerateWorldTicket(accountId, playerId, serverName);
+                                std::ostringstream oss;
+                                oss << "SELECT_OK#" << host << "#" << port << "#" << ticket;
+                                response = oss.str();
+                            }
+                        }
                     }
-                    else
-                    {
-                        // 서버 확인
-                        auto its = std::find_if(servers.begin(), servers.end(),
-                            [&](const ServerInfo& s) { return s.id == serverId; });
-                        if (its == servers.end() || !its->online)
-                        {
-                            response = "SELECT_FAIL#SERVER_UNAVAILABLE";
-                        }
-                        else
-                        {
-                            std::string ticket = GenerateWorldTicket(userId, charId, serverId);
-                            std::ostringstream oss;
-                            oss << "SELECT_OK#" << its->ip << "#" << its->port << "#" << ticket;
-                            response = oss.str();
-                        }
+                    catch (const sql::SQLException& e) {
+                        std::cerr << "[SQL] select: " << CommonDB::SqlUtil::Explain(e) << std::endl;
+                        response = "SELECT_FAIL#SERVER_ERROR";
                     }
                 }
             }
-            else
-            {
+            else {
                 response = "INVALID_COMMAND";
             }
         }
 
         if (!response.empty()) {
-            response += "\n"; // 메시지 경계
-            int sent = send(clientSocket, response.c_str(), (int)response.length(), 0);
-            std::cout << "Send: [" << response << "] (" << sent << " bytes)" << std::endl;
+            response.push_back('\n');
+            send(clientSocket, response.c_str(), (int)response.size(), 0);
+            std::cout << "Send: " << response;
         }
-
-        memset(buffer, 0, BUFFER_SIZE);
+        memset(buffer, 0, sizeof(buffer));
     }
 
-    if (recvResult == 0)  std::cout << "Connection closing..." << std::endl;
-    else                  std::cout << "Recv failed: " << WSAGetLastError() << std::endl;
+    if (recvResult == 0)  std::cout << "Connection closing...\n";
+    else                  std::cout << "Recv failed: " << WSAGetLastError() << "\n";
 
     closesocket(clientSocket);
-    std::cout << "Client disconnected." << std::endl;
+    std::cout << "Client disconnected.\n";
 }
 
-std::vector<std::string> Net_S::Split(const std::string& s, char delimiter)
-{
-    std::vector<std::string> tokens;
-    std::string token;
-    std::istringstream tokenStream(s);
-    while (std::getline(tokenStream, token, delimiter))
-    {
-        tokens.push_back(token);
-    }
-    return tokens;
-}
-
-std::string Net_S::CreateSession(const std::string& userId)
-{
-    // token = userId:timestamp:hash(userId+timestamp+SECRET)
-    std::time_t now = std::time(nullptr);
-    std::string core = userId + ":" + std::to_string((long long)now);
-    std::hash<std::string> h;
-    std::string sig = std::to_string(h(core + ":" + SESSION_SECRET));
-    std::string token = core + ":" + sig;
-    sessionToUser[token] = userId;
-    return token;
-}
-
-bool Net_S::CheckSession(const std::string& token, std::string& outUserId)
-{
-    auto it = sessionToUser.find(token);
-    if (it == sessionToUser.end()) return false;
-
-    // (데모) 만료 검사 생략. 실제에선 timestamp + 만료 + 서명 재검증 필요.
-    outUserId = it->second;
-    return true;
-}
-
-std::string Net_S::GenerateWorldTicket(const std::string& userId, int charId, const std::string& serverId)
-{
-    // 간단 서명 티켓: userId|charId|serverId|ts|sig
-    std::time_t now = std::time(nullptr);
-    std::string payload = userId + "|" + std::to_string(charId) + "|" + serverId + "|" + std::to_string((long long)now);
-    std::hash<std::string> h;
-    std::string sig = std::to_string(h(payload + ":" + SESSION_SECRET));
-    return payload + "|" + sig;
-}
-
-void Net_S::Cleanup()
-{
-    if (ServerSocket != INVALID_SOCKET)
-    {
-        closesocket(ServerSocket);
-    }
-    WSACleanup();
-}
-
-int main()
-{
-    Net_S server;
-    server.Run();
+// main
+int main() {
+    try { Net_S server; server.Run(); }
+    catch (...) { std::cerr << "Fatal: initialization failed.\n"; }
     return 0;
 }

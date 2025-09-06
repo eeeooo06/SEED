@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #define NOMINMAX
 
 #include <memory>
@@ -75,14 +75,20 @@ class LobbyScene : public IScene {
     TextDX font;
 
     // 위치/레이아웃
-    RECT rcId{}, rcPw{}, rcBtn{}, rcMsg{};
+    RECT rcId{}, rcPw{}, rcMsg{};
     RECT rcPanel{};               // 패널 전체 영역
+    RECT rcLoginBtn{}, rcRegisterBtn{}, rcExitBtn{};
 
     // 정점 버퍼 (한 번 만들어서 계속 사용)
     LP_VERTEXBUFFER vbPanel = nullptr;
     LP_VERTEXBUFFER vbIdBox = nullptr;
     LP_VERTEXBUFFER vbPwBox = nullptr;
-    LP_VERTEXBUFFER vbBtn = nullptr;
+
+    // 버튼 이미지
+    TextureManager buttonTexture;
+    Image loginButton;
+    Image registerButton;
+    Image exitButton;
 
     // 입력 상태
     bool focusPw = false;
@@ -106,9 +112,14 @@ class LobbyScene : public IScene {
         rcId = { x + pad, yy, x + pad + boxW, yy + boxH }; yy += boxH + 16;
         rcPw = { x + pad, yy, x + pad + boxW, yy + boxH }; yy += boxH + 24;
 
-        const int btnW = 160, btnH = 42;
-        const int btnX = x + (panelW - btnW) / 2;
-        rcBtn = { btnX, yy, btnX + btnW, yy + btnH };
+        const int btnW = 100, btnH = 42;
+        const int btnSpacing = 20;
+        const int totalBtnW = btnW * 3 + btnSpacing * 2;
+        int btnX = x + (panelW - totalBtnW) / 2;
+
+        rcLoginBtn = { btnX, yy, btnX + btnW, yy + btnH }; btnX += btnW + btnSpacing;
+        rcRegisterBtn = { btnX, yy, btnX + btnW, yy + btnH }; btnX += btnW + btnSpacing;
+        rcExitBtn = { btnX, yy, btnX + btnW, yy + btnH };
 
         rcMsg = { x + pad, y + 8, x + panelW - pad, y + 28 };
 
@@ -121,13 +132,12 @@ class LobbyScene : public IScene {
                 { (float)r.left,  (float)r.bottom, 0, 1, argb },
             };
             d.g->createVertexBuffer(v, sizeof(v), out);
-            };
+        };
 
-        // 반투명 패널, 밝은 입력박스, 버튼
+        // 반투명 패널, 밝은 입력박스
         makeVB(rcPanel, D3DCOLOR_ARGB(200, 20, 24, 32), vbPanel);
         makeVB(rcId, D3DCOLOR_ARGB(230, 245, 245, 248), vbIdBox);
         makeVB(rcPw, D3DCOLOR_ARGB(230, 245, 245, 248), vbPwBox);
-        makeVB(rcBtn, D3DCOLOR_ARGB(255, 80, 140, 240), vbBtn);
     }
 
     static bool pointInRect(int x, int y, const RECT& r) {
@@ -141,22 +151,46 @@ public:
         ShowCursor(TRUE);
         font.initialize(d.g, 24, true, false, "Arial");
         buildPanelAndBoxes();
+
+        if (!buttonTexture.initialize(d.g, "pictures\\menu.png"))
+            throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing button texture"));
+
+        // Initialize buttons
+        if (!loginButton.initialize(d.g, 0, 0, 0, &buttonTexture))
+            throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing login button"));
+        loginButton.setSpriteDataRect({ 0, 0, 64, 32 });
+        loginButton.setX(rcLoginBtn.left);
+        loginButton.setY(rcLoginBtn.top);
+        loginButton.setScale( (float)(rcLoginBtn.right - rcLoginBtn.left) / 64.0f);
+
+        if (!registerButton.initialize(d.g, 0, 0, 0, &buttonTexture))
+            throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing register button"));
+        registerButton.setSpriteDataRect({ 64, 0, 128, 32 });
+        registerButton.setX(rcRegisterBtn.left);
+        registerButton.setY(rcRegisterBtn.top);
+        registerButton.setScale( (float)(rcRegisterBtn.right - rcRegisterBtn.left) / 64.0f);
+
+        if (!exitButton.initialize(d.g, 0, 0, 0, &buttonTexture))
+            throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing exit button"));
+        exitButton.setSpriteDataRect({ 128, 0, 192, 32 });
+        exitButton.setX(rcExitBtn.left);
+        exitButton.setY(rcExitBtn.top);
+        exitButton.setScale( (float)(rcExitBtn.right - rcExitBtn.left) / 64.0f);
     }
 
     void exit() override {
         if (vbPanel) vbPanel->Release(), vbPanel = nullptr;
         if (vbIdBox) vbIdBox->Release(), vbIdBox = nullptr;
         if (vbPwBox) vbPwBox->Release(), vbPwBox = nullptr;
-        if (vbBtn)   vbBtn->Release(), vbBtn = nullptr;
+        buttonTexture.onLostDevice();
     }
 
     void tryLogin() {
         if (id.empty() || pw.empty()) return;
         if (!d.client) { d.login->setFailed("Client pointer is null"); return; }
 
-        // 연결 없으면 연결
         if (!d.client->isConnected()) {
-            if (!d.client->connectTo("222.232.36.150", 32000)) {
+            if (!d.client->connectTo("127.0.0.1", 32000)) {
                 int e = WSAGetLastError();
                 char buf[64]; sprintf_s(buf, "Connect failed (%d)", e);
                 d.login->setFailed(buf);
@@ -164,7 +198,6 @@ public:
             }
         }
 
-        // 로그인 요청 (줄바꿈은 LoginClient::login 안에서 처리)
         if (!d.client->login(id, pw)) {
             int e = WSAGetLastError();
             char buf[64]; sprintf_s(buf, "Send failed (%d)", e);
@@ -176,26 +209,26 @@ public:
     }
 
     void update(float) override {
-        // 마우스 포커스/클릭
         int mx = d.i->getMouseX(), my = d.i->getMouseY();
         bool lmb = d.i->getMouseLButton();
 
         if (lmb && !lmbPrev) {
             if (pointInRect(mx, my, rcId)) focusPw = false;
             if (pointInRect(mx, my, rcPw)) focusPw = true;
-            if (pointInRect(mx, my, rcBtn)) tryLogin();
+            if (pointInRect(mx, my, rcLoginBtn)) tryLogin();
+            if (pointInRect(mx, my, rcRegisterBtn)) { /* Register logic here */ }
+            if (pointInRect(mx, my, rcExitBtn)) PostQuitMessage(0);
         }
         lmbPrev = lmb;
 
-        // 문자 입력
         for (int ch = d.i->getCharIn(); ch != 0; ch = d.i->getCharIn()) {
-            if (ch == '\r' || ch == '\n') {                 // Enter
+            if (ch == '\r' || ch == '\n') {
                 if (!focusPw) focusPw = true;
-                else          tryLogin();
+                else tryLogin();
                 continue;
             }
             if (ch == '\t') { focusPw = !focusPw; continue; }
-            if (ch == 8) {                                   // Backspace
+            if (ch == 8) {
                 auto& s = (focusPw ? pw : id);
                 if (!s.empty()) s.pop_back();
                 continue;
@@ -208,35 +241,31 @@ public:
     }
 
     void render() override {
-        // 패널/박스/버튼
         d.g->drawQuad(vbPanel);
         d.g->drawQuad(vbIdBox);
         d.g->drawQuad(vbPwBox);
-        d.g->drawQuad(vbBtn);
 
-        // 에러 메시지
+        loginButton.draw();
+        registerButton.draw();
+        exitButton.draw();
+
         if (d.login->status() == LoginService::Status::Failed) {
             font.print(d.login->error().c_str(), rcMsg, DT_CENTER | DT_VCENTER);
         }
 
-        // 라벨
         RECT r;
         r = { rcId.left, rcId.top - 22, rcId.right, rcId.top };
         font.print("ID", r, DT_LEFT);
         r = { rcPw.left, rcPw.top - 22, rcPw.right, rcPw.top };
         font.print("PASSWORD", r, DT_LEFT);
 
-        // 입력 내용
         auto drawBoxText = [&](RECT rc, const std::string& text, bool pwmask) {
             std::string s = pwmask ? std::string(text.size(), '*') : text;
             RECT inner = { rc.left + 10, rc.top + 6, rc.right - 10, rc.bottom - 6 };
             font.print(s.c_str(), inner, DT_LEFT | DT_VCENTER);
-            };
+        };
         drawBoxText(rcId, id, false);
         drawBoxText(rcPw, pw, true);
-
-        // 버튼 라벨
-        font.print("LOGIN", rcBtn, DT_CENTER | DT_VCENTER);
     }
 
     bool hasPending() const {
@@ -261,13 +290,8 @@ public:
         ShowCursor(TRUE);
         font.initialize(d.g, 24, true, false, "Arial");
 
-        // pictures\loading.png 로드 (경로/파일명은 원하는 걸로)
         if (loadingTex.initialize(d.g, "pictures\\loading.png")) {
             loadingBg.initialize(d.g, 0, 0, 1, &loadingTex);
-            // 화면에 꽉 채우고 싶으면 스케일 조정 (Image가 setScale 지원한다면)
-            // float sx = float(GAME_WIDTH)  / loadingBg.getWidth();
-            // float sy = float(GAME_HEIGHT) / loadingBg.getHeight();
-            // loadingBg.setScaleX(sx); loadingBg.setScaleY(sy);
             loadingBg.setX(0); loadingBg.setY(0);
         }
     }
@@ -281,8 +305,8 @@ public:
 
         using S = LoginClient::Status;
         if (d.client->status() == S::LoggedIn) {
-            d.client->requestServerList();   // 목록 받아오게 하고
-            d.login->setSuccess();           // 성공 플래그만 세움 (→ ServerList 씬으로 전환)
+            d.client->requestServerList();
+            d.login->setSuccess();
         }
         else if (d.client->status() == S::Error) {
             d.login->setFailed(d.client->error());
@@ -307,12 +331,12 @@ public:
 // ---------------------------------------------------------
 class ServerListScene : public IScene {
     SceneDeps d; TextDX fontTitle, fontItem;
-    int sel = 0;                     // 선택 인덱스
-    float reqTimer = 0.f;            // 주기적 갱신(선택)
+    int sel = 0;
+    float reqTimer = 0.f;
 
     float enterCooldown = 0.25f;
     bool confirmed_ = false;
-    std::string chosenServerId;       // 선택한 서버 id(옵션)
+    std::string chosenServerId;
 
 public:
     ServerListScene(const SceneDeps& deps) : d(deps) {}
@@ -321,7 +345,6 @@ public:
         ShowCursor(TRUE);
         fontTitle.initialize(d.g, 28, true, false, "Arial");
         fontItem.initialize(d.g, 20, false, false, "Arial");
-        // 혹시 이전 씬에서 못 보냈다면 여기서도 한번 요청
         if (d.client) d.client->requestServerList();
         enterCooldown = 0.0f;
         bool confirmed_ = false;
@@ -329,11 +352,10 @@ public:
 
     void update(float dt) override {
         if (!d.client) return;
-        d.client->update(); // SERVER_LIST 수신을 위해 계속 펌프
+        d.client->update();
 
         if (enterCooldown > 0.f) enterCooldown -= dt;
 
-        // 위/아래로 선택 이동
         if (d.i->wasKeyPressed(VK_UP))
             sel = (std::max)(0, sel - 1);
         if (d.i->wasKeyPressed(VK_DOWN)) {
@@ -341,18 +363,14 @@ public:
             if (n) sel = (std::min)(n - 1, sel + 1);
         }
 
-        // Enter → 캐릭터 목록 요청 (다음 씬에서 처리할 예정)
         if (enterCooldown <= 0.f && d.i->wasKeyPressed(VK_RETURN)) {
             const auto& arr = d.client->servers();
             if (!arr.empty()) {
-                confirmed_ = true;                        // ← 지역변수 말고 멤버!
+                confirmed_ = true;
                 chosenServerId = arr[sel].id;
-                // 여기서 다음 씬으로 전환 신호만 주고, 실제 전환은 RPG::update()에서.
-                // 예) confirmed = true;  또는 외부에서 input->wasKeyPressed(VK_RETURN)만 체크해도 좋음.
             }
         }
 
-        // 가끔 새로고침 (선택)
         reqTimer += dt;
         if (reqTimer > 5.f) { d.client->requestServerList(); reqTimer = 0.f; }
     }
@@ -373,7 +391,8 @@ public:
             const auto& s = arr[i];
             char line[256];
             sprintf_s(line, "[%c]  %-10s  %-12s:%d   load:%d%%   %s",
-                (i == sel ? '*' : ' '), s.id.c_str(), s.ip.c_str(), s.port, s.load, (s.online ? "online" : "down"));
+                (i == sel ? '*' : ' '),
+                s.id.c_str(), s.ip.c_str(), s.port, s.load, (s.online ? "online" : "down"));
             RECT rr = { 80, y, GAME_WIDTH - 80, y + 26 };
             fontItem.print(line, rr, DT_LEFT | DT_VCENTER);
             y += 28;
@@ -390,8 +409,8 @@ public:
     }
 
 
-    bool consumeConfirmed()                 // 한 번 읽으면 false로 떨어뜨리기
-    {                               
+    bool consumeConfirmed()
+    {
         bool t = confirmed_; confirmed_ = false; return t;
     }
     int selectedIndex() const { return sel; }
@@ -411,7 +430,6 @@ public:
 
     void enter() override {
         ShowCursor(FALSE);
-        // 임시 맵(파일 없으면 menu.png 재사용)
         if (!mapTex.initialize(d.g, "pictures\\map.png"))
             mapTex.initialize(d.g, "pictures\\menu.png");
         map.initialize(d.g, 0, 0, 1, &mapTex);
@@ -420,11 +438,9 @@ public:
     }
 
     void update(float) override {
-        // ESC → 로그아웃 예시
         if (d.i && d.i->isKeyDown(ESC_KEY)) {
             if (d.client) d.client->logout();
             if (d.login)  d.login->reset();
-            // 실제 씬 전환은 엔진의 씬 매니저에서 처리
         }
     }
 
