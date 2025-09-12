@@ -15,33 +15,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{B1271C31-1C2C-4351-B4B1-E27C7701C4BD}|..\\Common.DB\\Common.DB.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\DB.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1271C31-1C2C-4351-B4B1-E27C7701C4BD}|..\\Common.DB\\Common.DB.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\Directory.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1271C31-1C2C-4351-B4B1-E27C7701C4BD}|..\\Common.DB\\Common.DB.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1271C31-1C2C-4351-B4B1-E27C7701C4BD}|..\\Common.DB\\Common.DB.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1271C31-1C2C-4351-B4B1-E27C7701C4BD}|..\\Common.DB\\Common.DB.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\Directory.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1271C31-1C2C-4351-B4B1-E27C7701C4BD}|..\\Common.DB\\Common.DB.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\Auth.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1271C31-1C2C-4351-B4B1-E27C7701C4BD}|..\\Common.DB\\Common.DB.vcxproj|C:\\USERS\\SEONG\\ONEDRIVE\\\uBC14\uD0D5 \uD654\uBA74\\GITHUB\\SEED\\SERVER\\COMMON.DB\\AUTH.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1271C31-1C2C-4351-B4B1-E27C7701C4BD}|..\\Common.DB\\Common.DB.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\SqlUtil.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1271C31-1C2C-4351-B4B1-E27C7701C4BD}|..\\Common.DB\\Common.DB.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\SqlUtil.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CC784D6D-336F-4AFE-8396-FC911B237E42}|..\\TCP_WorldServer\\TCP_WorldServer.vcxproj|C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\TCP_WorldServer\\WorldServer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -51,7 +24,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -59,100 +32,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Game.cpp",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\Game.cpp",
-              "RelativeDocumentMoniker": "..\\Common.DB\\Game.cpp",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\Game.cpp",
-              "RelativeToolTip": "..\\Common.DB\\Game.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-05T05:36:38.184Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Game.h",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\Game.h",
-              "RelativeDocumentMoniker": "..\\Common.DB\\Game.h",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\Game.h",
-              "RelativeToolTip": "..\\Common.DB\\Game.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABEAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Net_S.h",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\TCP_Server\\Net_S.h",
+              "RelativeDocumentMoniker": "Net_S.h",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\TCP_Server\\Net_S.h",
+              "RelativeToolTip": "Net_S.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-09-05T05:36:29.35Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Directory.cpp",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\Directory.cpp",
-              "RelativeDocumentMoniker": "..\\Common.DB\\Directory.cpp",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\Directory.cpp",
-              "RelativeToolTip": "..\\Common.DB\\Directory.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-05T05:36:12.093Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Directory.h",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\Directory.h",
-              "RelativeDocumentMoniker": "..\\Common.DB\\Directory.h",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\Directory.h",
-              "RelativeToolTip": "..\\Common.DB\\Directory.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-09-05T05:36:08.818Z",
+              "WhenOpened": "2025-09-11T09:19:34.834Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Auth.cpp",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\Auth.cpp",
-              "RelativeDocumentMoniker": "..\\Common.DB\\Auth.cpp",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\Auth.cpp",
-              "RelativeToolTip": "..\\Common.DB\\Auth.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-05T05:35:44.855Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Auth.h",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\Auth.h",
-              "RelativeDocumentMoniker": "..\\Common.DB\\Auth.h",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\Auth.h",
-              "RelativeToolTip": "..\\Common.DB\\Auth.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-09-05T05:35:42.189Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "SqlUtil.cpp",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\SqlUtil.cpp",
-              "RelativeDocumentMoniker": "..\\Common.DB\\SqlUtil.cpp",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\SqlUtil.cpp",
-              "RelativeToolTip": "..\\Common.DB\\SqlUtil.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-05T05:34:22.574Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "SqlUtil.h",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\SqlUtil.h",
-              "RelativeDocumentMoniker": "..\\Common.DB\\SqlUtil.h",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\SqlUtil.h",
-              "RelativeToolTip": "..\\Common.DB\\SqlUtil.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-09-05T05:34:18.725Z"
             },
             {
               "$type": "Document",
@@ -162,22 +51,9 @@
               "RelativeDocumentMoniker": "..\\Common.DB\\DB.cpp",
               "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\DB.cpp",
               "RelativeToolTip": "..\\Common.DB\\DB.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAcwFAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-05T05:33:37.806Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DB.h",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\DB.h",
-              "RelativeDocumentMoniker": "..\\Common.DB\\DB.h",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\DB.h",
-              "RelativeToolTip": "..\\Common.DB\\DB.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-09-05T05:28:33.962Z",
+              "WhenOpened": "2025-09-11T09:18:51.912Z",
               "EditorCaption": ""
             },
             {
@@ -188,35 +64,23 @@
               "RelativeDocumentMoniker": "Net_S.cpp",
               "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\TCP_Server\\Net_S.cpp",
               "RelativeToolTip": "Net_S.cpp",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAAC0AAABAAAAAAAAAAA==",
+              "ViewState": "AgIAAIEBAAAAAAAAAAAcwIUBAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-02T10:14:56.405Z",
+              "WhenOpened": "2025-09-10T02:02:28.114Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Net_S.h",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\TCP_Server\\Net_S.h",
-              "RelativeDocumentMoniker": "Net_S.h",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\TCP_Server\\Net_S.h",
-              "RelativeToolTip": "Net_S.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAWAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "DB.h",
+              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\DB.h",
+              "RelativeDocumentMoniker": "..\\Common.DB\\DB.h",
+              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\Common.DB\\DB.h",
+              "RelativeToolTip": "..\\Common.DB\\DB.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-09-06T05:37:57.019Z",
+              "WhenOpened": "2025-09-10T02:01:43.862Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "WorldServer.cpp",
-              "DocumentMoniker": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\TCP_WorldServer\\WorldServer.cpp",
-              "RelativeDocumentMoniker": "..\\TCP_WorldServer\\WorldServer.cpp",
-              "ToolTip": "C:\\Users\\seong\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Github\\SEED\\Server\\TCP_WorldServer\\WorldServer.cpp",
-              "RelativeToolTip": "..\\TCP_WorldServer\\WorldServer.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-04T09:32:34.032Z"
             }
           ]
         }

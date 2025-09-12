@@ -7,7 +7,7 @@
 #include <string>
 #include <unordered_map>
 
-#include "Db.h"
+#include "DB.h"
 #include "Auth.h"
 #include "Directory.h"
 #include "Game.h"
@@ -21,11 +21,11 @@ public:
     bool BindAndListen();
     void Run();
     void Cleanup();
-
-private:
     bool InitializeDatabase();
+    void handleLine(const std::string& input, SOCKET clientSocket);
     void HandleClient(SOCKET clientSocket);
 
+private:
     bool CheckSession(const std::string& token, uint64_t& outAccountId);
     std::string CreateSession(uint64_t accountId);
     std::string GenerateWorldTicket(uint64_t accountId, uint64_t playerId, const std::string& serverName);

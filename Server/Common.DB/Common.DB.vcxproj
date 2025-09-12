@@ -131,9 +131,9 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\Dev\mysql-connector-c++-9.4.0-winx64\include%(AdditionalIncludeDirectories);C:\Dev\mysql-connector-c++-9.4.0-winx64\include\jdbc</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ShowIncludes>false</ShowIncludes>
+      <AdditionalIncludeDirectories>C:\Program Files\MySQL\mysql-connector-c++-9.3.0-winx64\include;C:\Program Files\MySQL\mysql-connector-c++-9.3.0-winx64\include\jdbc;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -155,9 +155,9 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\Dev\mysql-connector-c++-9.4.0-winx64\include%(AdditionalIncludeDirectories);C:\Dev\mysql-connector-c++-9.4.0-winx64\include\jdbc</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ShowIncludes>false</ShowIncludes>
+      <AdditionalIncludeDirectories>C:\Program Files\MySQL\mysql-connector-c++-9.3.0-winx64\include;C:\Program Files\MySQL\mysql-connector-c++-9.3.0-winx64\include\jdbc;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>

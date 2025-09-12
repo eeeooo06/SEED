@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #define NOMINMAX
 
 #include <memory>
@@ -76,30 +76,33 @@ class LobbyScene : public IScene {
 
     // 위치/레이아웃
     RECT rcId{}, rcPw{}, rcMsg{};
-    RECT rcPanel{};               // 패널 전체 영역
+    RECT rcPanel{};
     RECT rcLoginBtn{}, rcRegisterBtn{}, rcExitBtn{};
 
-    // 정점 버퍼 (한 번 만들어서 계속 사용)
+    // 반투명 패널만 쿼드로 (배경 톤다운용). 입력 박스/버튼은 이미지로 교체.
     LP_VERTEXBUFFER vbPanel = nullptr;
-    LP_VERTEXBUFFER vbIdBox = nullptr;
-    LP_VERTEXBUFFER vbPwBox = nullptr;
 
-    // 버튼 이미지
-    TextureManager buttonTexture;
-    Image loginButton;
-    Image registerButton;
-    Image exitButton;
+    // 아틀라스(한 장) + 요소 이미지
+    TextureManager lobbyAtlas;
+    TextureManager loginUiTex;
+    Image loginUi;
+    Image idBoxImg, pwBoxImg;
+    Image loginBtnImg, registerBtnImg, exitBtnImg;
 
     // 입력 상태
     bool focusPw = false;
     std::string id, pw;
     bool lmbPrev = false;
 
-    // 하단-우측 고정 패널 재계산 + 정점 버퍼 생성
+    static bool pointInRect(int x, int y, const RECT& r) {
+        return (x >= r.left && x < r.right && y >= r.top && y < r.bottom);
+    }
+
+    // 하단-우측 고정 패널 레이아웃
     void buildPanelAndBoxes() {
         const int panelW = 420;
         const int panelH = 220;
-        const int margin = 24;              // 화면 오른쪽/아래 여백
+        const int margin = 24;
         const int x = GAME_WIDTH - panelW - margin;
         const int y = GAME_HEIGHT - panelH - margin;
         rcPanel = { x, y, x + panelW, y + panelH };
@@ -123,25 +126,46 @@ class LobbyScene : public IScene {
 
         rcMsg = { x + pad, y + 8, x + panelW - pad, y + 28 };
 
-        auto makeVB = [&](const RECT& r, DWORD argb, LP_VERTEXBUFFER& out) {
-            if (out) { out->Release(); out = nullptr; }
-            VertexC v[4] = {
-                { (float)r.left,  (float)r.top,    0, 1, argb },
-                { (float)r.right, (float)r.top,    0, 1, argb },
-                { (float)r.right, (float)r.bottom, 0, 1, argb },
-                { (float)r.left,  (float)r.bottom, 0, 1, argb },
-            };
-            d.g->createVertexBuffer(v, sizeof(v), out);
+        // 패널만 반투명 쿼드 생성 (입력 박스/버튼은 이미지로 그림)
+        if (vbPanel) { vbPanel->Release(); vbPanel = nullptr; }
+        VertexC v[4] = {
+            { (float)rcPanel.left,  (float)rcPanel.top,    0, 1, D3DCOLOR_ARGB(200, 20, 24, 32) },
+            { (float)rcPanel.right, (float)rcPanel.top,    0, 1, D3DCOLOR_ARGB(200, 20, 24, 32) },
+            { (float)rcPanel.right, (float)rcPanel.bottom, 0, 1, D3DCOLOR_ARGB(200, 20, 24, 32) },
+            { (float)rcPanel.left,  (float)rcPanel.bottom, 0, 1, D3DCOLOR_ARGB(200, 20, 24, 32) },
         };
-
-        // 반투명 패널, 밝은 입력박스
-        makeVB(rcPanel, D3DCOLOR_ARGB(200, 20, 24, 32), vbPanel);
-        makeVB(rcId, D3DCOLOR_ARGB(230, 245, 245, 248), vbIdBox);
-        makeVB(rcPw, D3DCOLOR_ARGB(230, 245, 245, 248), vbPwBox);
+        d.g->createVertexBuffer(v, sizeof(v), vbPanel);
     }
 
-    static bool pointInRect(int x, int y, const RECT& r) {
-        return (x >= r.left && x < r.right && y >= r.top && y < r.bottom);
+    // src(아틀라스 내 픽셀 Rect) -> 화면 rc에 맞춰 배치/스케일
+    void setupSprite(Image& dst, const RECT& src, const RECT& rc) {
+        const int sw = src.right - src.left;
+        const int sh = src.bottom - src.top;
+
+        if (!dst.initialize(d.g, sw, sh, 1, &lobbyAtlas)) // 적절한 포인터 사용
+            throw GameError(gameErrorNS::FATAL_ERROR, "Image init failed");
+
+        dst.setSpriteDataRect(src);
+
+        const float dw = float(rc.right - rc.left);
+        const float dh = float(rc.bottom - rc.top);
+
+        // 1) 가로 기준으로 꽉 채우고(혹은 min(sx,sy)로 '전체가 보이게'도 가능)
+        const float sx = dw / float(sw);
+        const float sy = dh / float(sh);
+        const float s = sx;           // 가로를 기준으로 맞춤 (필요하면 float s = std::min(sx, sy);)
+
+        dst.setScale(s);
+
+        // 2) 실제 그려질 크기
+        const float drawnW = float(sw) * s;
+        const float drawnH = float(sh) * s;
+
+        // 3) 정렬 방식: 중앙 정렬
+        const float x = float(rc.left) + (dw - drawnW) * 0.5f;
+        const float y = float(rc.top) + (dh - drawnH) * 0.5f;
+        dst.setX(x);
+        dst.setY(y);
     }
 
 public:
@@ -150,39 +174,36 @@ public:
     void enter() override {
         ShowCursor(TRUE);
         font.initialize(d.g, 24, true, false, "Arial");
-        buildPanelAndBoxes();
 
-        if (!buttonTexture.initialize(d.g, "pictures\\menu.png"))
-            throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing button texture"));
+        // 1) 한 장짜리 로그인 UI 로드
+        if (!loginUiTex.initialize(d.g, "pictures\\loginboxUI.png"))
+            throw(GameError(gameErrorNS::FATAL_ERROR, "login UI load fail"));
+        loginUi.initialize(d.g, 0, 0, 1, &loginUiTex);
 
-        // Initialize buttons
-        if (!loginButton.initialize(d.g, 0, 0, 0, &buttonTexture))
-            throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing login button"));
-        loginButton.setSpriteDataRect({ 0, 0, 64, 32 });
-        loginButton.setX(rcLoginBtn.left);
-        loginButton.setY(rcLoginBtn.top);
-        loginButton.setScale( (float)(rcLoginBtn.right - rcLoginBtn.left) / 64.0f);
+        // 2) 우하단 앵커 배치
+        const int margin = 24;
+        const int panelW = (int)loginUi.getWidth();   // 472
+        const int panelH = (int)loginUi.getHeight();  // 229
+        const int x = GAME_WIDTH - panelW - margin;
+        const int y = GAME_HEIGHT - panelH - margin;
+        loginUi.setX((float)x);
+        loginUi.setY((float)y);
 
-        if (!registerButton.initialize(d.g, 0, 0, 0, &buttonTexture))
-            throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing register button"));
-        registerButton.setSpriteDataRect({ 64, 0, 128, 32 });
-        registerButton.setX(rcRegisterBtn.left);
-        registerButton.setY(rcRegisterBtn.top);
-        registerButton.setScale( (float)(rcRegisterBtn.right - rcRegisterBtn.left) / 64.0f);
-
-        if (!exitButton.initialize(d.g, 0, 0, 0, &buttonTexture))
-            throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing exit button"));
-        exitButton.setSpriteDataRect({ 128, 0, 192, 32 });
-        exitButton.setX(rcExitBtn.left);
-        exitButton.setY(rcExitBtn.top);
-        exitButton.setScale( (float)(rcExitBtn.right - rcExitBtn.left) / 64.0f);
+        // 3) 클릭/텍스트 영역(이미지 기준 오프셋, 필요시 1~2px 미세조정)
+        auto R = [&](int l, int t, int r, int b) { return RECT{ x + l, y + t, x + r, y + b }; };
+        rcPanel = R(0, 0, panelW, panelH);
+        rcId = R(70, 24, 70 + 320, 24 + 36);
+        rcPw = R(70, 74, 70 + 320, 74 + 36);
+        rcLoginBtn = R(20, 154, 20 + 120, 154 + 52);
+        rcRegisterBtn = R(176, 154, 176 + 120, 154 + 52);
+        rcExitBtn = R(332, 154, 332 + 120, 154 + 52);
+        rcMsg = R(16, 8, panelW - 16, 30);
     }
 
     void exit() override {
         if (vbPanel) vbPanel->Release(), vbPanel = nullptr;
-        if (vbIdBox) vbIdBox->Release(), vbIdBox = nullptr;
-        if (vbPwBox) vbPwBox->Release(), vbPwBox = nullptr;
-        buttonTexture.onLostDevice();
+        lobbyAtlas.onLostDevice();
+        loginUiTex.onLostDevice();
     }
 
     void tryLogin() {
@@ -197,14 +218,12 @@ public:
                 return;
             }
         }
-
         if (!d.client->login(id, pw)) {
             int e = WSAGetLastError();
             char buf[64]; sprintf_s(buf, "Send failed (%d)", e);
             d.login->setFailed(buf);
             return;
         }
-
         d.login->startPending(id, pw);
     }
 
@@ -213,26 +232,18 @@ public:
         bool lmb = d.i->getMouseLButton();
 
         if (lmb && !lmbPrev) {
-            if (pointInRect(mx, my, rcId)) focusPw = false;
-            if (pointInRect(mx, my, rcPw)) focusPw = true;
-            if (pointInRect(mx, my, rcLoginBtn)) tryLogin();
-            if (pointInRect(mx, my, rcRegisterBtn)) { /* Register logic here */ }
-            if (pointInRect(mx, my, rcExitBtn)) PostQuitMessage(0);
+            if (pointInRect(mx, my, rcId))      focusPw = false;
+            if (pointInRect(mx, my, rcPw))      focusPw = true;
+            if (pointInRect(mx, my, rcLoginBtn))    tryLogin();
+            if (pointInRect(mx, my, rcRegisterBtn)) { /* TODO: Register */ }
+            if (pointInRect(mx, my, rcExitBtn))     PostQuitMessage(0);
         }
         lmbPrev = lmb;
 
         for (int ch = d.i->getCharIn(); ch != 0; ch = d.i->getCharIn()) {
-            if (ch == '\r' || ch == '\n') {
-                if (!focusPw) focusPw = true;
-                else tryLogin();
-                continue;
-            }
+            if (ch == '\r' || ch == '\n') { if (!focusPw) focusPw = true; else tryLogin(); continue; }
             if (ch == '\t') { focusPw = !focusPw; continue; }
-            if (ch == 8) {
-                auto& s = (focusPw ? pw : id);
-                if (!s.empty()) s.pop_back();
-                continue;
-            }
+            if (ch == 8) { auto& s = (focusPw ? pw : id); if (!s.empty()) s.pop_back(); continue; }
             if (ch >= 32 && ch < 127) {
                 auto& s = (focusPw ? pw : id);
                 if (s.size() < 32) s.push_back(char(ch));
@@ -241,29 +252,29 @@ public:
     }
 
     void render() override {
-        d.g->drawQuad(vbPanel);
-        d.g->drawQuad(vbIdBox);
-        d.g->drawQuad(vbPwBox);
+        // 배경은 RPG가 그림 → 여기서는 UI만
+        loginUi.draw();
 
-        loginButton.draw();
-        registerButton.draw();
-        exitButton.draw();
-
-        if (d.login->status() == LoginService::Status::Failed) {
+        if (d.login->status() == LoginService::Status::Failed)
             font.print(d.login->error().c_str(), rcMsg, DT_CENTER | DT_VCENTER);
-        }
 
-        RECT r;
-        r = { rcId.left, rcId.top - 22, rcId.right, rcId.top };
-        font.print("ID", r, DT_LEFT);
-        r = { rcPw.left, rcPw.top - 22, rcPw.right, rcPw.top };
-        font.print("PASSWORD", r, DT_LEFT);
-
+        // 입력 텍스트만 (라벨 "ID:/PW:"는 이미지에 그려져 있음)
         auto drawBoxText = [&](RECT rc, const std::string& text, bool pwmask) {
             std::string s = pwmask ? std::string(text.size(), '*') : text;
-            RECT inner = { rc.left + 10, rc.top + 6, rc.right - 10, rc.bottom - 6 };
+
+            // 원하는 만큼 조정(필요시 값만 바꾸면 됨)
+            constexpr int kShiftX = 36;  // ▶ 오른쪽으로
+            constexpr int kShiftY = 6;   // ▶ 아래로
+
+            RECT inner = {
+                rc.left + 10 + kShiftX,
+                rc.top + 6 + kShiftY,
+                rc.right - 10,
+                rc.bottom - 6
+            };
             font.print(s.c_str(), inner, DT_LEFT | DT_VCENTER);
-        };
+            };
+
         drawBoxText(rcId, id, false);
         drawBoxText(rcPw, pw, true);
     }
@@ -338,6 +349,12 @@ class ServerListScene : public IScene {
     bool confirmed_ = false;
     std::string chosenServerId;
 
+    TextureManager serverUiTex;
+    Image serverUi;
+    RECT lineRects[3]{};     // 서버 3줄 표기 영역
+    RECT rcConnect{}, rcRefresh{}, rcBack{};
+    bool lmbPrev = false;
+
 public:
     ServerListScene(const SceneDeps& deps) : d(deps) {}
 
@@ -347,7 +364,30 @@ public:
         fontItem.initialize(d.g, 20, false, false, "Arial");
         if (d.client) d.client->requestServerList();
         enterCooldown = 0.0f;
-        bool confirmed_ = false;
+        confirmed_ = false;   // ← 멤버 값
+
+        // UI 로드
+        if (!serverUiTex.initialize(d.g, "pictures\\serverlistUI.png"))
+            throw(GameError(gameErrorNS::FATAL_ERROR, "serverlist UI load fail"));
+        serverUi.initialize(d.g, 0, 0, 1, &serverUiTex);
+
+        // 우하단 앵커
+        const int margin = 24;
+        const int panelW = (int)serverUi.getWidth();   // 598
+        const int panelH = (int)serverUi.getHeight();  // 319
+        const int x = GAME_WIDTH - panelW - margin;
+        const int y = GAME_HEIGHT - panelH - margin;
+        serverUi.setX((float)x);
+        serverUi.setY((float)y);
+
+        // 슬롯/버튼 사각형(그림 기준 오프셋)
+        auto R = [&](int l, int t, int r, int b) { return RECT{ x + l, y + t, x + r, y + b }; };
+        lineRects[0] = R(36, 24, 560, 24 + 28);
+        lineRects[1] = R(36, 64, 560, 64 + 28);
+        lineRects[2] = R(36, 104, 560, 104 + 28);
+        rcConnect = R(24, 244, 24 + 160, 244 + 60);
+        rcRefresh = R(220, 244, 220 + 160, 244 + 60);
+        rcBack = R(416, 244, 416 + 160, 244 + 60);
     }
 
     void update(float dt) override {
@@ -356,50 +396,62 @@ public:
 
         if (enterCooldown > 0.f) enterCooldown -= dt;
 
-        if (d.i->wasKeyPressed(VK_UP))
-            sel = (std::max)(0, sel - 1);
+        // 키보드
+        if (d.i->wasKeyPressed(VK_UP))   sel = (std::max)(0, sel - 1);
         if (d.i->wasKeyPressed(VK_DOWN)) {
             int n = (int)d.client->servers().size();
             if (n) sel = (std::min)(n - 1, sel + 1);
         }
-
         if (enterCooldown <= 0.f && d.i->wasKeyPressed(VK_RETURN)) {
             const auto& arr = d.client->servers();
-            if (!arr.empty()) {
-                confirmed_ = true;
-                chosenServerId = arr[sel].id;
-            }
+            if (!arr.empty()) { confirmed_ = true; chosenServerId = arr[sel].id; }
         }
 
+        // 마우스
+        int mx = d.i->getMouseX(), my = d.i->getMouseY();
+        bool lmb = d.i->getMouseLButton();
+        auto hit = [&](const RECT& r) { return (mx >= r.left && mx < r.right && my >= r.top && my < r.bottom); };
+        if (lmb && !lmbPrev) {
+            if (hit(rcBack)) { confirmed_ = false; chosenServerId.clear(); /* 뒤로: 로비로 */ if (d.login) d.login->reset(); }
+            if (hit(rcRefresh)) { if (d.client) d.client->requestServerList(); }
+            if (hit(rcConnect)) {
+                const auto& arr = d.client->servers();
+                if (!arr.empty()) { confirmed_ = true; chosenServerId = arr[sel].id; }
+            }
+            // 라인 클릭으로 선택
+            for (int i = 0; i < 3; i++) if (hit(lineRects[i])) sel = i;
+        }
+        lmbPrev = lmb;
+
+        // 주기적 새로고침
         reqTimer += dt;
         if (reqTimer > 5.f) { d.client->requestServerList(); reqTimer = 0.f; }
     }
 
     void render() override {
-        RECT r = { 0, 30, GAME_WIDTH, 60 };
-        fontTitle.print("Select a Server", r, DT_CENTER);
+        serverUi.draw();
 
+        if (!d.client) return;
         const auto& arr = d.client->servers();
-        int y = 100;
+
         if (arr.empty()) {
-            RECT rr = { 0, y, GAME_WIDTH, y + 30 };
-            fontItem.print("Fetching server list...", rr, DT_CENTER);
+            RECT rr = lineRects[1];
+            fontItem.print("Fetching server list...", rr, DT_LEFT | DT_VCENTER);
             return;
         }
 
-        for (int i = 0; i < (int)arr.size(); ++i) {
+        for (int i = 0; i < (int)std::min<size_t>(arr.size(), 3); ++i) {
             const auto& s = arr[i];
             char line[256];
-            sprintf_s(line, "[%c]  %-10s  %-12s:%d   load:%d%%   %s",
-                (i == sel ? '*' : ' '),
+            sprintf_s(line, "%s  %s:%d  load:%d%%  %s",
                 s.id.c_str(), s.ip.c_str(), s.port, s.load, (s.online ? "online" : "down"));
-            RECT rr = { 80, y, GAME_WIDTH - 80, y + 26 };
-            fontItem.print(line, rr, DT_LEFT | DT_VCENTER);
-            y += 28;
+            // 선택 강조(간단히 좌측에 '>' 붙이기)
+            if (i == sel) {
+                RECT mark = lineRects[i]; mark.right = mark.left + 12;
+                fontItem.print(">", mark, DT_LEFT | DT_VCENTER);
+            }
+            fontItem.print(line, lineRects[i], DT_LEFT | DT_VCENTER);
         }
-
-        RECT hint = { 0, GAME_HEIGHT - 40, GAME_WIDTH, GAME_HEIGHT - 10 };
-        fontItem.print("UP/DOWN: select   ENTER: confirm", hint, DT_CENTER);
     }
 
     bool takeConfirmed() {
@@ -431,7 +483,7 @@ public:
     void enter() override {
         ShowCursor(FALSE);
         if (!mapTex.initialize(d.g, "pictures\\map.png"))
-            mapTex.initialize(d.g, "pictures\\menu.png");
+            mapTex.initialize(d.g, "pictures\\main.png");
         map.initialize(d.g, 0, 0, 1, &mapTex);
         map.setX(0); map.setY(0);
         font.initialize(d.g, 18, true, false, "Arial");

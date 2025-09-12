@@ -21,25 +21,57 @@ void RPG::initialize(HWND hwnd)
 {
     Game::initialize(hwnd); // 부모 클래스의 초기화 함수를 호출합니다.
 
-    // 메뉴 텍스처 초기화
-    if (!menuTexture.initialize(graphics, "pictures\\menu.png"))
-        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu texture"));
+    // 로비 텍스처 초기화
+    if (!lobbyTex.initialize(graphics, "pictures\\lobby.png"))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing lobby texture"));
+
+    // 로딩 텍스처 초기화
+    if (!loadingTex.initialize(graphics, "pictures\\loading.png"))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing loading texture"));
+
+    //// 서버 리스트 텍스처 초기화
+    //if (!serverlistTex.initialize(graphics, "pictures\\serverlist.png"))
+    //    throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing serverlist texture"));
+
+    // 메인 텍스처 초기화 (추후 map으로 변경)
+    if (!mainTex.initialize(graphics, "pictures\\main.png"))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing main texture"));
 
     // 게임 텍스처 초기화
-    if (!gameTextures.initialize(graphics, "pictures\\textures.png"))
-        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing game textures"));
+    if (!gameTex.initialize(graphics, "pictures\\game.png"))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing game texture"));
 
-    // 메뉴 이미지 초기화
-    if (!menu.initialize(graphics, 0, 0, 1, &menuTexture))
-        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu image"));
-    menu.setX(0.f); menu.setY(0.f);
+    // 로비 이미지 초기화
+    if (!lobbyImg.initialize(graphics, 0, 0, 1, &lobbyTex))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing lobby image"));
+    lobbyImg.setX(0.f); lobbyImg.setY(0.f);
+
+    // 로딩 이미지 초기화
+    if (!loadingImg.initialize(graphics, 0, 0, 1, &loadingTex))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing loading image"));
+    loadingImg.setX(0.f); loadingImg.setY(0.f);
+
+    //// 서버 리스트 이미지 초기화
+    //if (!serverlistImg.initialize(graphics, 0, 0, 1, &serverlistTex))
+    //    throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing serverlist image"));
+    serverlistImg.setX(0.f); serverlistImg.setY(0.f);
+
+    // 메인 이미지 초기화 (추후 map으로 변경)
+    if (!mainImg.initialize(graphics, 0, 0, 1, &mainTex))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing main image"));
+    mainImg.setX(0.f); mainImg.setY(0.f);
+
+    // 게임 이미지 초기화
+    if (!gameImg.initialize(graphics, 0, 0, 1, &gameTex))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing game image"));
+    gameImg.setX(0.f); gameImg.setY(0.f);
 
 
     // 서버 접속 초기화
     if (!client.connectTo("127.0.0.1", 32000)) {  // 서버 포트 32000
         MessageBoxA(NULL, "Login server connect failed", "ERROR", MB_OK);
     }
-
+    
     changeScene(SceneList::Lobby);
 
     // 플레이어 초기화
@@ -53,7 +85,7 @@ void RPG::initialize(HWND hwnd)
     
 
     // 대시보드 초기화
-    if (!dashboard.initialize(graphics, &gameTextures, 0, 0, 10, D3DCOLOR_ARGB(255, 255, 0, 0)))
+    if (!dashboard.initialize(graphics, &gameTex, 0, 0, 10, D3DCOLOR_ARGB(255, 255, 0, 0)))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing dashboard"));
 
     // 초기에는 메뉴 화면을 보여주기 위해 paused 상태로 설정
@@ -145,26 +177,24 @@ void RPG::render()
     if (!graphics) return;
 
     graphics->beginScene();
-    graphics->spriteBegin();                // 스프라이트 그리기 시작
+    graphics->spriteBegin();
 
-    // 1) 씬별 배경
+    // ▶ 공통 배경: 로비/로딩/서버리스트는 모두 같은 배경
     switch (current) {
     case SceneList::Lobby:
     case SceneList::Loading:
     case SceneList::ServerList:
-        // 로비/로딩/서버리스트는 메뉴 배경 사용
-        menu.draw();
+        lobbyImg.draw();      // ← 여기만 그림
         break;
 
     case SceneList::Main:
-        // 메인 맵은 MainMapScene이 직접 맵 이미지를 그림
+        mainImg.draw();       // 메인은 기존대로
         break;
     }
 
-    // 2) 현재 씬의 UI/텍스트 등
     if (scene) scene->render();
 
-    graphics->spriteEnd();                  // 스프라이트 그리기 종료
+    graphics->spriteEnd();
     graphics->endScene();
     graphics->showBackbuffer();
 }
@@ -174,8 +204,11 @@ void RPG::render()
 //=============================================================================
 void RPG::releaseAll()
 {
-    menuTexture.onLostDevice();
-    gameTextures.onLostDevice();
+    lobbyTex.onLostDevice();
+    loadingTex.onLostDevice();
+    serverlistTex.onLostDevice();
+    mainTex.onLostDevice();
+    gameTex.onLostDevice();
     Game::releaseAll();
     return;
 }
@@ -185,8 +218,11 @@ void RPG::releaseAll()
 //=============================================================================
 void RPG::resetAll()
 {
-    gameTextures.onResetDevice();
-    menuTexture.onResetDevice();
+    gameTex.onResetDevice();
+    mainTex.onResetDevice();
+    serverlistTex.onResetDevice();
+    loadingTex.onResetDevice();
+    lobbyTex.onResetDevice();
     Game::resetAll();
     return;
 }
@@ -198,7 +234,7 @@ void RPG::changeScene(SceneList k)
     SceneDeps deps{};
     deps.g = graphics;
     deps.i = input;
-    deps.atlas = &gameTextures;
+    deps.atlas = &gameTex;
     deps.login = &login;
     deps.client = &client;
 

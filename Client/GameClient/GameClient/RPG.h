@@ -24,11 +24,16 @@ class RPG : public Game
 {
 private:
     // RPG Member Variables
-    TextureManager menuTexture; // 메뉴 텍스처
-    TextureManager gameTextures; // 게임 텍스처
-    Entity  player;             // 플레이어
+    TextureManager lobbyTex, loadingTex, serverlistTex;
+    Image lobbyImg, loadingImg, serverlistImg;
+
+    TextureManager mainTex, gameTex;
+    Image mainImg, gameImg;
+
+
+    Entity  player;       // 플레이어
     Bar dashboard;        // 대시보드
-    Image   menu;               // 메뉴 이미지
+
 
     // Scene Login Memer VArialbes
     LoginClient client;

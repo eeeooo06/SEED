@@ -104,13 +104,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\seong\OneDrive\바탕 화면\Github\SEED\Server\Common.DB;C:\Dev\mysql-connector-c++-9.4.0-winx64\include\jdbc;C:\Dev\mysql-connector-c++-9.4.0-winx64\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\seong\OneDrive\바탕 화면\Github\SEED\Server\Common.DB;C:\Program Files\MySQL\mysql-connector-c++-9.3.0-winx64\include;C:\Program Files\MySQL\mysql-connector-c++-9.3.0-winx64\include\jdbc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Dev\mysql-connector-c++-9.4.0-winx64\lib64\vs14;$(SolutionDir)..\x64\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>mysqlcppconn.lib;Common.DB.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mysqlcppconn.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Program Files\MySQL\mysql-connector-c++-9.3.0-winx64\lib64\vs14;</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -121,15 +121,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\seong\OneDrive\바탕 화면\Github\SEED\Server\Common.DB;C:\Dev\mysql-connector-c++-9.4.0-winx64\include\jdbc;C:\Dev\mysql-connector-c++-9.4.0-winx64\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\seong\OneDrive\바탕 화면\Github\SEED\Server\Common.DB;C:\Program Files\MySQL\mysql-connector-c++-9.3.0-winx64\include;C:\Program Files\MySQL\mysql-connector-c++-9.3.0-winx64\include\jdbc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Dev\mysql-connector-c++-9.4.0-winx64\lib64\vs14;$(SolutionDir)..\x64\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>mysqlcppconn.lib;Common.DB.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mysqlcppconn.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Program Files\MySQL\mysql-connector-c++-9.3.0-winx64\lib64\vs14;</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

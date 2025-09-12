@@ -1,2 +1,17 @@
-﻿  LINK : C:\Users\seong\OneDrive\바탕 화면\Github\SEED\Client\GameClient\x64\Debug\GameClient.exe not found or not built by the last incremental link; performing full link
+﻿  Main.cpp
+C:\Users\seong\OneDrive\바탕 화면\Github\SEED\Client\GameClient\GameClient\Game.h(1,1): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+  (compiling source file 'Main.cpp')
+  
+  Including RPG.h from: C:\Users\seong\OneDrive\바탕 화면\Github\SEED\Client\GameClient\GameClient\RPG.h
+C:\Users\seong\OneDrive\바탕 화면\Github\SEED\Client\GameClient\GameClient\Main.cpp(59,19): warning C4244: 'return': conversion from 'WPARAM' to 'int', possible loss of data
+  RPG.cpp
+C:\Users\seong\OneDrive\바탕 화면\Github\SEED\Client\GameClient\GameClient\Game.h(1,1): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+  (compiling source file 'RPG.cpp')
+  
+  Including RPG.h from: C:\Users\seong\OneDrive\바탕 화면\Github\SEED\Client\GameClient\GameClient\RPG.h
+  Scene.cpp
+C:\Users\seong\OneDrive\바탕 화면\Github\SEED\Client\GameClient\GameClient\Game.h(1,1): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+  (compiling source file 'Scene.cpp')
+  
+  Generating Code...
   GameClient.vcxproj -> C:\Users\seong\OneDrive\바탕 화면\Github\SEED\Client\GameClient\x64\Debug\GameClient.exe
